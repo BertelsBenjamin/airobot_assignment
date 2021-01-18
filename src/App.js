@@ -1,12 +1,10 @@
 import {
   MapContainer,
   TileLayer,
-  Marker,
-  Popup,
   WMSTileLayer,
   LayerGroup,
 } from 'react-leaflet';
-import Leaflet from 'leaflet';
+import LocationMarker from './components/LocationMarker';
 
 function App() {
   return (
@@ -21,7 +19,7 @@ function App() {
         <TileLayer url={'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png'} />
         <LayerGroup>
           <WMSTileLayer
-            url='https://geoservices.informatievlaanderen.be/raadpleegdiensten/Adpf/wms?request=getcapabilities&version=1.3.0&service=wms&Content-Type=text/xml'
+            url='https://geoservices.informatievlaanderen.be/raadpleegdiensten/Adpf/wms?request=getcapabilities&version=1.3.0&service=wms'
             params={{
               layers: 'Adpf2020',
               attribution: 'Administratieve percelen',
@@ -32,9 +30,7 @@ function App() {
             }}
           />
         </LayerGroup>
-        <Marker position={[50.8, 5.2]}>
-          <Popup>Hello world</Popup>
-        </Marker>
+        <LocationMarker />
       </MapContainer>
     </div>
   );
